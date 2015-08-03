@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Task Popper</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tasks_saved_key_name">hasSavedTasks</string>
+    <string name="tasks_saved_list_key_name">savedTasksList</string>
+    <string name="ok">Create</string>
+    <string name="cancel">Cancel</string>
+    <string name="task_item_add_dialog_title">Add Task</string>
+    <string name="tasks_saved_file_name">savedtasks</string>
+    <string name="task_item_delete_confirmation">Are you sure?</string>
+    <string name="confirm">Confirm</string>
+    <string name="delete">Delete</string>
+    <string name="task_item_delete_button_description">Delete Task Button</string>
+    <string name="task_item_done_check_box_content_description">Check Off Task Checkbox</string>
+</resources>
