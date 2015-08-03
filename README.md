@@ -3,6 +3,10 @@ A small android application that manages my task lists.
 Orignally inspired for a list of gym sets that was easy to use and had instructions for each exercise.
 Existing task apps are good however lack intergrations
 
+Here is what it currently looks like
+
+<img width=270 height=480 src="http://i.imgur.com/cxEqE1H.png"/>
+
 #Intergrations
 ##TODO
 - Taiga.io
