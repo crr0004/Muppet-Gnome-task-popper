@@ -16,6 +16,7 @@ Existing task apps are good however lack intergrations
 - Add sublists for easy repeat
 - Add swiping off tasks to complete
 - Remove checkbox to be replaced by swiping
+
 ##Done
 - Add tasks
 - Remove tasks
