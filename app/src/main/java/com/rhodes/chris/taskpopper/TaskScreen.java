@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ import java.nio.ByteBuffer;
 public class TaskScreen extends AppCompatActivity {
 
     private TaskAdapter taskAdapter;
+    //TODO Move to method
     private MenuItem.OnMenuItemClickListener addTaskMenuAction = new MenuItem.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
@@ -60,6 +62,7 @@ public class TaskScreen extends AppCompatActivity {
             dialog.setOnShowListener(new DialogInterface.OnShowListener() {
                 @Override
                 public void onShow(DialogInterface dialog) {
+                    //TODO This doesn't work. Should auto focus on textbox when dialog opens
                     enteredText.requestFocus();
                 }
             });
@@ -84,7 +87,8 @@ public class TaskScreen extends AppCompatActivity {
                 taskAdapter.loadState(readStringFromFile(fis, stringLength));
 
             } catch (FileNotFoundException e) {
-
+                //TODO Tag should be const in class
+                Log.v("TaskScreen", "Tried to load from persistent memory. File not found");
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -141,7 +145,7 @@ public class TaskScreen extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         FileOutputStream fos = null;
-
+//TODO This should have a test
         try {
             fos = openFileOutput(getString(R.string.tasks_saved_file_name), Context.MODE_PRIVATE);
             String tasksSavedState = taskAdapter.getState();
@@ -153,7 +157,9 @@ public class TaskScreen extends AppCompatActivity {
             e.printStackTrace();
         } finally {
             try {
-                fos.close();
+                if(fos != null) {
+                    fos.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -172,6 +178,7 @@ public class TaskScreen extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_task_screen, menu);
+        //TODO This shouldn't be here. Should be in onOptionsItemSelected function and the method called from there
         menu.findItem(R.id.action_add_task).setOnMenuItemClickListener(addTaskMenuAction);
         return true;
     }

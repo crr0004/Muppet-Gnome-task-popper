@@ -24,6 +24,7 @@ public class TaskAdapter implements ListAdapter{
     private static ListAdapter instance;
 
     //Creates a default list of items for testing
+    //TODO This should be documented
     public TaskAdapter(int numberOfItems){
         for(int i = 0; i < numberOfItems; i++){
             taskList.add(new Task("Default " + i));
@@ -33,17 +34,21 @@ public class TaskAdapter implements ListAdapter{
     }
 
     //Creates an empty adapter that when is added to sets itself to as an adapter
+    //TODO This should be documented
     public TaskAdapter(ListView listHost){
         TaskAdapter.listHost = listHost;
         instance = this;
     }
 
     //Restores a state
+    //TODO This should be documented
     public TaskAdapter(Context context, Bundle savedState){
         this.loadState(context, savedState);
         instance = this;
     }
 
+    //TODO This should have a test
+    //TODO This should be documented
     public void loadState(Context context, Bundle bundle){
         if(bundle.getBoolean(context.getString(R.string.tasks_saved_key_name), false)){
             String savedTasks = bundle.getString(context.getString(R.string.tasks_saved_list_key_name), "Default 1");
@@ -51,6 +56,8 @@ public class TaskAdapter implements ListAdapter{
         }
     }
 
+    //TODO This should have a test
+    //TODO This should be documented
     public void loadState(String savedTasks) {
         String[] taskDescriptions = savedTasks.split(",");
         for (String taskDesc:
@@ -58,7 +65,7 @@ public class TaskAdapter implements ListAdapter{
             TaskAdapter.AddTask(new Task(taskDesc));
         }
     }
-
+    //TODO This should be documented
     public void saveState(Context context, Bundle bundle){
         if(getCount() > 0) {
             bundle.putBoolean(context.getString(R.string.tasks_saved_key_name), true);
@@ -67,6 +74,8 @@ public class TaskAdapter implements ListAdapter{
         }
     }
 
+    //TODO This should have a test
+    //TODO This should be documented
     public String getState(){
         StringBuilder tasksString = new StringBuilder();
         tasksString.append(taskList.get(0).getDesc());
@@ -94,6 +103,8 @@ public class TaskAdapter implements ListAdapter{
     }
 
     /*
+    //TODO Fix phrasing and proper explanation
+    //TODO Add proper documentation for each method
     The following methods are static to allow for classes that haven't been passed a reference to the current TaskAdapter to add and remove tasks
      */
 
@@ -137,14 +148,15 @@ public class TaskAdapter implements ListAdapter{
         return taskList.get(position).isEnabled();
     }
 
+    //TODO Check if more than one observer is passed through here
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
-        this.observer = observer;
+        TaskAdapter.observer = observer;
     }
 
     @Override
     public void unregisterDataSetObserver(DataSetObserver observer) {
-        this.observer = null;
+        TaskAdapter.observer = null;
     }
 
     @Override

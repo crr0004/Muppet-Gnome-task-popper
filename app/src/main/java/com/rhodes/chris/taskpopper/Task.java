@@ -43,7 +43,7 @@ public class Task {
             public boolean onLongClick(View v) {
 
 
-                //This should probably go in a message to the activity handling this view
+                //TODO This should go in a message to the activity handling this view
                 ListView listView = ((ListView) v.getParent());
 
                 for (int i = 0; i < listView.getChildCount(); i++) {
@@ -97,6 +97,7 @@ public class Task {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                    //TODO This doesn't work. Should gray out task
                     Drawable background = ((View)buttonView.getParent()).getBackground();
                     background.setColorFilter(Color.parseColor("#00ff00"), PorterDuff.Mode.DARKEN);
                 }
