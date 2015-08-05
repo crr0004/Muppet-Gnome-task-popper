@@ -3,6 +3,10 @@ A small android application that manages my task lists.
 Orignally inspired for a list of gym sets that was easy to use and had instructions for each exercise.
 Existing task apps are good however lack intergrations
 
+Here is what it currently looks like
+
+<img width=270 height=480 src="http://i.imgur.com/cxEqE1H.png"/>
+
 #Intergrations
 ##TODO
 - Taiga.io
@@ -13,6 +17,10 @@ Existing task apps are good however lack intergrations
 - Hide extra buttons
 - Add done button for extra buttons
 - Add cancel button for extra buttons
+- Move task order
+- Add mass tags
+- Presets
+- Add seperators
 - Add sublists for easy repeat
 - Add swiping off tasks to complete
 - Remove checkbox to be replaced by swiping
