@@ -19,6 +19,7 @@ Here is what it currently looks like
 - Add cancel button for extra buttons
 - Move task order
 - Add mass tags
+- Presets
 - Add seperators
 - Add sublists for easy repeat
 - Add swiping off tasks to complete
