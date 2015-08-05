@@ -17,6 +17,9 @@ Here is what it currently looks like
 - Hide extra buttons
 - Add done button for extra buttons
 - Add cancel button for extra buttons
+- Move task order
+- Add mass tags
+- Add seperators
 - Add sublists for easy repeat
 - Add swiping off tasks to complete
 - Remove checkbox to be replaced by swiping
