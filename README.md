@@ -1,7 +1,7 @@
 # Muppet-Gnome-task-popper
 A small android application that manages my task lists. 
-Orignally inspired for a list of gym sets that was easy to use and had instructions for each exercise.
-Existing task apps are good however lack intergrations
+Originally inspired for a list of gym sets that was easy to use and had instructions for each exercise.
+Existing task apps are good however lack integrations
 
 Here is what it currently looks like
 
@@ -20,8 +20,8 @@ Here is what it currently looks like
 - Move task order
 - Add mass tags
 - Presets
-- Add seperators
-- Add sublists for easy repeat
+- Add separators
+- Add sub-lists for easy repeat
 - Add swiping off tasks to complete
 - Remove checkbox to be replaced by swiping
 
