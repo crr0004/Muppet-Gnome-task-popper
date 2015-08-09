@@ -5,7 +5,7 @@
     android:background="@android:color/background_light">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
@@ -13,7 +13,11 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginLeft="5dp"
+        android:layout_toLeftOf="@+id/taskItemDoneCheckBox"
+        android:layout_toStartOf="@+id/taskItemDoneCheckBox"
+        android:linksClickable="true"
+        android:maxLines="5" />
 
     <CheckBox
         android:layout_width="wrap_content"
