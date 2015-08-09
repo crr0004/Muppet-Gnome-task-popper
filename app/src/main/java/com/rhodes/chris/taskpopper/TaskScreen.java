@@ -82,7 +82,7 @@ public class TaskScreen extends AppCompatActivity {
         FileInputStream fis = null;
         if(savedInstanceState == null) {
             try {
-                fis = openFileInput(getString(R.string.tasks_saved_file_name));
+                fis = openSavedTasksFileInput();
                 int stringLength = readIntFromFile(fis);
                 taskAdapter.loadState(readStringFromFile(fis, stringLength));
 
@@ -141,18 +141,24 @@ public class TaskScreen extends AppCompatActivity {
         super.onResume();
     }
 
+    public FileInputStream openSavedTasksFileInput() throws FileNotFoundException{
+        return openFileInput(getString(R.string.tasks_saved_file_name));
+    }
+
+    public FileOutputStream openSavedTasksFileOutput() throws FileNotFoundException{
+        return openFileOutput(getString(R.string.tasks_saved_file_name), Context.MODE_PRIVATE);
+    }
+
+
     @Override
     protected void onStop() {
         super.onStop();
         FileOutputStream fos = null;
-//TODO This should have a test
         try {
-            fos = openFileOutput(getString(R.string.tasks_saved_file_name), Context.MODE_PRIVATE);
+            fos = openSavedTasksFileOutput();
             String tasksSavedState = taskAdapter.getState();
             writeIntToFile(fos, tasksSavedState.length());
             fos.write(tasksSavedState.getBytes());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -164,7 +170,6 @@ public class TaskScreen extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
     }
 
     @Override
