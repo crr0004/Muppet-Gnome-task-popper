@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.rhodes.chris.taskpopper.com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,14 +20,18 @@ import java.util.List;
  */
 public class TaskAdapter implements ListAdapter{
 
-    private static List<Task> taskList = new ArrayList<>(1);
+    private static List<Task> taskList = new ArrayList<>(0);
     private static DataSetObserver observer;
     private static ListView listHost;
     private static ListAdapter instance;
 
-    //Creates a default list of items for testing
-    //TODO This should be documented
+    /**
+        Creates an adapter with default items
+        Items are of text: "Default #n" where #n is the item number
+        @param numberOfItems Number of items to initially create
+     */
     public TaskAdapter(int numberOfItems){
+        taskList.clear();
         for(int i = 0; i < numberOfItems; i++){
             taskList.add(new Task("Default " + i));
         }
@@ -33,39 +39,64 @@ public class TaskAdapter implements ListAdapter{
 
     }
 
-    //Creates an empty adapter that when is added to sets itself to as an adapter
-    //TODO This should be documented
+    /**
+        Creates an empty adapter. That will attach itself when you add to it for the first time.
+        @param listHost The listview which the adapter should attach itself to
+     */
     public TaskAdapter(ListView listHost){
         TaskAdapter.listHost = listHost;
         instance = this;
     }
 
-    //Restores a state
-    //TODO This should be documented
+    /**
+     * Creates an adapter from a saved bundle
+     * @see TaskAdapter loadState for format for bundle
+     * @param context The application context
+     * @param savedState The bundle with the needed data
+     */
     public TaskAdapter(Context context, Bundle savedState){
         this.loadState(context, savedState);
         instance = this;
     }
 
-    //TODO This should have a test
-    //TODO This should be documented
+    /**
+     * Loads the saved tasks from a saved bundle.
+     * The bundle must contain @see R.string.tasks_saved_key_name with being true
+     * The tasks data is stored in @see R.string.tasks_saved_list_key_name
+     * @param context The context of the application
+     * @param bundle The bundle in which the data is pulled from
+     */
     public void loadState(Context context, Bundle bundle){
+        //Should this have a test?
         if(bundle.getBoolean(context.getString(R.string.tasks_saved_key_name), false)){
             String savedTasks = bundle.getString(context.getString(R.string.tasks_saved_list_key_name), "Default 1");
             loadState(savedTasks);
         }
     }
 
-    //TODO This should have a test
-    //TODO This should be documented
+    /**
+     * Adds the tasks to the task adapter
+     * Format of tasks in string: TaskName1,TaskName2,TaskName3
+     * That would create three tasks of TaskName1, TaskName2 and TaskName3
+     * @param savedTasks String of saved tasks
+     */
     public void loadState(String savedTasks) {
+        //What happens for a blank string?
+        if(savedTasks.length() == 0){
+            throw new TaskAdapterException("loaded with a zero length string");
+        }
         String[] taskDescriptions = savedTasks.split(",");
         for (String taskDesc:
                 taskDescriptions) {
             TaskAdapter.AddTask(new Task(taskDesc));
         }
     }
-    //TODO This should be documented
+
+    /**
+     * Puts the current tasks in this adapter into the provided bundle
+     * @param context The context of the application
+     * @param bundle The bundle to save to
+     */
     public void saveState(Context context, Bundle bundle){
         if(getCount() > 0) {
             bundle.putBoolean(context.getString(R.string.tasks_saved_key_name), true);
@@ -74,8 +105,10 @@ public class TaskAdapter implements ListAdapter{
         }
     }
 
-    //TODO This should have a test
-    //TODO This should be documented
+    /**
+     * Creates a string of the current tasks in the adapter
+     * @return The string containing the saved tasks
+     */
     public String getState(){
         StringBuilder tasksString = new StringBuilder();
         tasksString.append(taskList.get(0).getDesc());
@@ -91,7 +124,11 @@ public class TaskAdapter implements ListAdapter{
         if(observer != null){
             observer.onChanged();
         }else{
-            listHost.setAdapter(TaskAdapter.instance);
+            //Should this have an error message saying the listHost is null?
+            if(listHost != null){
+                listHost.setAdapter(TaskAdapter.instance);
+            }
+
         }
 
     }
@@ -103,15 +140,23 @@ public class TaskAdapter implements ListAdapter{
     }
 
     /*
-    //TODO Fix phrasing and proper explanation
-    //TODO Add proper documentation for each method
-    The following methods are static to allow for classes that haven't been passed a reference to the current TaskAdapter to add and remove tasks
+    The following methods are static to prevent 'reference hell'.
+    This allows other classes to access TaskAdapter to add and remove tasks without a reference
      */
 
+    /**
+     * Adds a task to the end of the list and refreshes the current listview
+     * @param task The task to add
+     */
     public static void AddTask(Task task){
         TaskAdapter.AddTaskAt(task, taskList.size());
     }
 
+    /**
+     * Adds a task to position in the list and refreshes the current listview
+     * @param task The task to add
+     * @param position The position of the task in the list
+     */
     public static void AddTaskAt(Task task, int position){
         TaskAdapter.taskList.add(position, task);
         if(taskList.size() <= 1){
@@ -121,12 +166,30 @@ public class TaskAdapter implements ListAdapter{
         observerInvalidated();
     }
 
+    /**
+     * Clears all the tasks from the list and refreshes listview
+     */
+    public static void RemoveAll(){
+        taskList.clear();
+        observerChanged();
+    }
+
+    /**
+     * Removes a given task from the list and refreshes the current listview
+     * @param task The task to remove
+     * @return If the removal was successful
+     */
     public static boolean RemoveTask(Task task){
         boolean status = TaskAdapter.taskList.remove(task);
         observerInvalidated();
         return status;
     }
 
+    /**
+     * Removes a task at the given position and refreshes the current listview
+     * @param position The position of the task to remove
+     * @return The removed task
+     */
     public static Task RemoveTaskAt(int position){
         Task task = TaskAdapter.taskList.remove(position);
         observer.onInvalidated();
