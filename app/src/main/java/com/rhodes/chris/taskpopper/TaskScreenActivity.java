@@ -3,6 +3,7 @@ package com.rhodes.chris.taskpopper;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,7 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-public class TaskScreen extends AppCompatActivity {
+public class TaskScreenActivity extends AppCompatActivity {
 
     private TaskAdapter taskAdapter;
     //TODO Move to method
@@ -27,10 +28,10 @@ public class TaskScreen extends AppCompatActivity {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(TaskScreen.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(TaskScreenActivity.this);
 // Add the buttons
 
-            LayoutInflater inflater = TaskScreen.this.getLayoutInflater();
+            LayoutInflater inflater = TaskScreenActivity.this.getLayoutInflater();
 
             builder.setTitle(getString(R.string.task_item_add_dialog_title));
 
@@ -79,29 +80,45 @@ public class TaskScreen extends AppCompatActivity {
 
         taskAdapter = new TaskAdapter((ListView)findViewById(R.id.taskListView));
 
-        FileInputStream fis = null;
-        if(savedInstanceState == null) {
-            try {
-                fis = openSavedTasksFileInput();
-                int stringLength = readIntFromFile(fis);
-                taskAdapter.loadState(readStringFromFile(fis, stringLength));
 
-            } catch (FileNotFoundException e) {
-                //TODO Tag should be const in class
-                Log.v("TaskScreen", "Tried to load from persistent memory. File not found");
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (fis != null) {
-                        fis.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        Intent intent = getIntent();
+
+        if(intent.getAction().equals(getString(R.string.action_add_mass_tasks))){
+            if(getIntent().getBooleanExtra(getString(R.string.tasks_saved_key_name), false)) {
+                String newTasks = getIntent().getStringExtra(getString(R.string.tasks_saved_list_key_name));
+                taskAdapter.loadState(newTasks);
             }
+            ((ListView) findViewById(R.id.taskListView)).setAdapter(taskAdapter);
+        }else if(savedInstanceState == null) {
+            loadFromFile();
         }
 
+    }
+
+    private void loadFromFile(){
+        FileInputStream fis = null;
+        try {
+            fis = openSavedTasksFileInput();
+            int stringLength = readIntFromFile(fis);
+            if(stringLength > 0) {
+                taskAdapter.loadState(readStringFromFile(fis, stringLength));
+                ((ListView)findViewById(R.id.taskListView)).setAdapter(taskAdapter);
+            }
+
+        } catch (FileNotFoundException e) {
+            //TODO Tag should be const in class
+            Log.v("TaskScreenActivity", "Tried to load from persistent memory. File not found");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private int readIntFromFile(FileInputStream fis) throws IOException {
@@ -198,7 +215,27 @@ public class TaskScreen extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id == R.id.action_add_mass_task){
+            startActivity(new Intent(this, MassAddActivity.class));
+        }else if(id == R.id.action_clear_all_tasks){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.abc_are_you_sure);
+            builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    TaskAdapter.RemoveAll();
+                    dialog.dismiss();
+                }
+            });
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.create().show();
         }
+
 
         return super.onOptionsItemSelected(item);
     }

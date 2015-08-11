@@ -111,10 +111,12 @@ public class TaskAdapter implements ListAdapter{
      */
     public String getState(){
         StringBuilder tasksString = new StringBuilder();
-        tasksString.append(taskList.get(0).getDesc());
-        for (int i = 1; i < taskList.size(); i++) {
-            tasksString.append(",");
-            tasksString.append(taskList.get(i).getDesc());
+        if(taskList.size() > 0) {
+            tasksString.append(taskList.get(0).getDesc());
+            for (int i = 1; i < taskList.size(); i++) {
+                tasksString.append(",");
+                tasksString.append(taskList.get(i).getDesc());
+            }
         }
 
         return tasksString.toString();
@@ -194,6 +196,29 @@ public class TaskAdapter implements ListAdapter{
         Task task = TaskAdapter.taskList.remove(position);
         observer.onInvalidated();
         return task;
+    }
+
+    /**
+     * Transforms text with newlines to the format where this task adapter can load the tasks from a string
+     * @param tasks Text with tasks separated by a newline
+     * @return string which can be used in loadState to create tasks
+     */
+    public static String TransformNewLineString(String tasks){
+
+        if(tasks.length() == 0){
+            throw new TaskAdapterException("Can't transform new line string with zero length");
+        }
+
+        String[] separatedTasks = tasks.split("\n");
+        StringBuilder newTasksBuffer = new StringBuilder();
+
+        newTasksBuffer.append(separatedTasks[0]);
+        for(int i = 1; i < separatedTasks.length; i++){
+            newTasksBuffer.append(",");
+            newTasksBuffer.append(separatedTasks[i]);
+        }
+
+        return newTasksBuffer.toString();
     }
 
     @Override

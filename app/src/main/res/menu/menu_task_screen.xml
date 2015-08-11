@@ -2,6 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".TaskScreen">
     <item android:id="@+id/action_add_task" android:title="Add Task"/>
+    <item android:id="@+id/action_add_mass_task" android:title="@string/addMassTextMenuOption"/>
+    <item android:id="@+id/action_clear_all_tasks" android:title="@string/clearAllTasksMenuOption"/>
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

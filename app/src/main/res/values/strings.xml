@@ -14,4 +14,11 @@
     <string name="delete">Delete</string>
     <string name="task_item_delete_button_description">Delete Task Button</string>
     <string name="task_item_done_check_box_content_description">Check Off Task Checkbox</string>
+    <string name="title_activity_massadd">Mass Add</string>
+    <string name="newMassTaskHintText">Add a lot of tasks, each task on a new line</string>
+    <string name="action_clear_text">Clear Text</string>
+    <string name="addMassTextMenuOption">Add Tasks in Mass</string>
+    <string name="clearAllTasksMenuOption">Remove All Tasks</string>
+    <string name="abc_are_you_sure">Are you sure?</string>
+    <string name="action_add_mass_tasks">com.rhodes.chris.add_mass_tasks</string>
 </resources>
