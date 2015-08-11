@@ -196,6 +196,29 @@ public class TaskAdapter implements ListAdapter{
         return task;
     }
 
+    /**
+     * Transforms text with newlines to the format where this task adapter can load the tasks from a string
+     * @param tasks Text with tasks separated by a newline
+     * @return string which can be used in loadState to create tasks
+     */
+    public static String TransformNewLineString(String tasks){
+
+        if(tasks.length() == 0){
+            throw new TaskAdapterException("Can't transform new line string with zero length");
+        }
+
+        String[] separatedTasks = tasks.split("\n");
+        StringBuilder newTasksBuffer = new StringBuilder();
+
+        newTasksBuffer.append(separatedTasks[0]);
+        for(int i = 1; i < separatedTasks.length; i++){
+            newTasksBuffer.append(",");
+            newTasksBuffer.append(separatedTasks[i]);
+        }
+
+        return newTasksBuffer.toString();
+    }
+
     @Override
     public boolean areAllItemsEnabled() {
         for (Task task: taskList) {

@@ -1,25 +1,20 @@
 package com.rhodes.chris.taskpopper;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.ActivityUnitTestCase;
 import android.widget.ListView;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 /**
  * Created by chris on 9/08/15.
- * Tests for TaskScreen
+ * Tests for TaskScreenActivity
  */
-public class TaskScreenTest extends ActivityInstrumentationTestCase2<TaskScreen> {
+public class TaskScreenTest extends ActivityInstrumentationTestCase2<TaskScreenActivity> {
 
-    private TaskScreen activity;
+    private TaskScreenActivity activity;
     private TaskAdapter adapter;
     private ListView listView;
 
     public TaskScreenTest() {
-        super(TaskScreen.class);
+        super(TaskScreenActivity.class);
     }
 
     @Override

@@ -19,7 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-public class TaskScreen extends AppCompatActivity {
+public class TaskScreenActivity extends AppCompatActivity {
 
     private TaskAdapter taskAdapter;
     //TODO Move to method
@@ -27,10 +27,10 @@ public class TaskScreen extends AppCompatActivity {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(TaskScreen.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(TaskScreenActivity.this);
 // Add the buttons
 
-            LayoutInflater inflater = TaskScreen.this.getLayoutInflater();
+            LayoutInflater inflater = TaskScreenActivity.this.getLayoutInflater();
 
             builder.setTitle(getString(R.string.task_item_add_dialog_title));
 
@@ -79,29 +79,38 @@ public class TaskScreen extends AppCompatActivity {
 
         taskAdapter = new TaskAdapter((ListView)findViewById(R.id.taskListView));
 
-        FileInputStream fis = null;
-        if(savedInstanceState == null) {
-            try {
-                fis = openSavedTasksFileInput();
-                int stringLength = readIntFromFile(fis);
-                taskAdapter.loadState(readStringFromFile(fis, stringLength));
 
-            } catch (FileNotFoundException e) {
-                //TODO Tag should be const in class
-                Log.v("TaskScreen", "Tried to load from persistent memory. File not found");
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (fis != null) {
-                        fis.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        if(savedInstanceState == null) {
+            loadFromFile();
+        }
+        if(getIntent().getBooleanExtra(getString(R.string.tasks_saved_key_name), false)){
+            String newTasks = getIntent().getStringExtra(getString(R.string.tasks_saved_list_key_name));
+            taskAdapter.loadState(newTasks);
         }
 
+    }
+
+    private void loadFromFile(){
+        FileInputStream fis = null;
+        try {
+            fis = openSavedTasksFileInput();
+            int stringLength = readIntFromFile(fis);
+            taskAdapter.loadState(readStringFromFile(fis, stringLength));
+
+        } catch (FileNotFoundException e) {
+            //TODO Tag should be const in class
+            Log.v("TaskScreenActivity", "Tried to load from persistent memory. File not found");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private int readIntFromFile(FileInputStream fis) throws IOException {
