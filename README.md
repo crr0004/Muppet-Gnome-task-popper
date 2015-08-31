@@ -14,6 +14,7 @@ Here is what it currently looks like
 
 #Features
 ##TODO
+- Figure out how to keep this code on github so it can be built independant of Android Studio
 - Have action list expand out when in select mode
 - Add done button for extra buttons
 - Add cancel button for extra buttons

@@ -1,6 +1,6 @@
 package com.rhodes.chris.taskpopper;
 
-import com.rhodes.chris.taskpopper.com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
+import com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
 
 import junit.framework.TestCase;
 
