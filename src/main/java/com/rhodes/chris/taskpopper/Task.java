@@ -22,6 +22,7 @@ public class Task {
 
     private boolean isEnabled = true;
     private String textDesc = "Hello World";
+    private boolean isChecked = false;
 
 
 
@@ -44,15 +45,9 @@ public class Task {
 
 
                 //TODO This should go in a message to the activity handling this view
-                ListView listView = ((ListView) v.getParent());
+                TaskScreenActivity.Handle.sendEmptyMessage(TaskScreenActivity.TASK_LONG_ITEM_CLICK);
 
-                for (int i = 0; i < listView.getChildCount(); i++) {
-                    final LinearLayout extraButtons = (LinearLayout) listView.getChildAt(i).findViewById(R.id.taskItemExtraButtonsLayout);
-                    ViewGroup.LayoutParams currentLayoutParams = extraButtons.getLayoutParams();
-                    currentLayoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                    extraButtons.setLayoutParams(currentLayoutParams);
-                    extraButtons.setVisibility(View.VISIBLE);
-                }
+
 
                 return true;
             }
@@ -61,7 +56,7 @@ public class Task {
         ((TextView)taskView.findViewById(R.id.taskItemText)).setText(this.textDesc);
 
 
-
+/*
         taskView.findViewById(R.id.taskItemDeleteButton).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -92,14 +87,15 @@ public class Task {
 
             }
         });
-
+*/
         ((CheckBox)taskView.findViewById(R.id.taskItemDoneCheckBox)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Task.this.isChecked = isChecked;
                 if(isChecked){
                     //TODO This doesn't work. Should gray out task
-                    Drawable background = ((View)buttonView.getParent()).getBackground();
-                    background.setColorFilter(Color.parseColor("#00ff00"), PorterDuff.Mode.DARKEN);
+                 //   Drawable background = ((View)buttonView.getParent()).getBackground();
+                   // background.setColorFilter(Color.parseColor("#00ff00"), PorterDuff.Mode.DARKEN);
                 }
             }
         });
@@ -107,6 +103,9 @@ public class Task {
         return taskView;
     }
 
+    public boolean isChecked(){
+        return isChecked;
+    }
 
     public String getDesc() {
         return this.textDesc;

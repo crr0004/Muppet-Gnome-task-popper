@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.rhodes.chris.taskpopper.com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
 
 /**
  * Created by chris on 2/08/15.
@@ -166,6 +166,14 @@ public class TaskAdapter implements ListAdapter{
         }
 
         observerInvalidated();
+    }
+
+    public static void RemoveSelected(){
+        for (int i = taskList.size(); i > 0; i--){
+            if(taskList.get(i-1).isChecked()) {
+                RemoveTaskAt(i-1);
+            }
+        }
     }
 
     /**

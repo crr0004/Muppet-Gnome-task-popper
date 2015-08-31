@@ -14,18 +14,21 @@ Here is what it currently looks like
 
 #Features
 ##TODO
-- Hide extra buttons
+- Have action list expand out when in select mode
 - Add done button for extra buttons
 - Add cancel button for extra buttons
 - Move task order
-- Add mass tags
 - Presets
 - Add separators
 - Add sub-lists for easy repeat
+    - Sets of todos that can added
 - Add swiping off tasks to complete
 - Remove checkbox to be replaced by swiping
 
 ##Done
+- Hide extra buttons
+- Add mass tags
+- Extra buttons moved to action list
 - Add tasks
 - Remove tasks
 - Show extra buttons

@@ -1,4 +1,4 @@
-package com.rhodes.chris.taskpopper.com.rhodes.chris.taskpopper.exceptions;
+package com.rhodes.chris.taskpopper.exceptions;
 
 /**
  * Created by chris on 9/08/15.

@@ -1,9 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".TaskScreen">
-    <item android:id="@+id/action_add_task" android:title="Add Task"/>
+    <item android:id="@+id/action_add_task" android:title="@string/addTaskMenuOption" app:showAsAction="ifRoom" android:icon="@android:drawable/ic_menu_add"/>
+    <item android:id="@+id/action_remove" app:showAsAction="collapseActionView" android:icon="@android:drawable/ic_menu_delete" android:title="@string/delete"/>
+    <item android:id="@+id/action_edit" app:showAsAction="collapseActionView" android:icon="@android:drawable/ic_menu_edit" android:title="@string/edit"/>
     <item android:id="@+id/action_add_mass_task" android:title="@string/addMassTextMenuOption"/>
     <item android:id="@+id/action_clear_all_tasks" android:title="@string/clearAllTasksMenuOption"/>
+
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

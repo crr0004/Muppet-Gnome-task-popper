@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".TaskScreen"
-    android:background="@android:color/background_light">
+    android:background="@android:color/background_light"
+    android:id="@+id/rootView">
 
     <ListView
         android:layout_width="wrap_content"
