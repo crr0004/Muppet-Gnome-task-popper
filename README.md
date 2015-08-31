@@ -10,6 +10,7 @@ Here is what it currently looks like
 #Intergrations
 ##TODO
 - Taiga.io
+    - See issue [#12](https://github.com/crr0004/Muppet-Gnome-task-popper/issues/12) for info about this
 - HabitRPG
 
 #Features
