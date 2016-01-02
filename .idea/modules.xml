@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Muppet-Gnome-task-popper.iml" filepath="$PROJECT_DIR$/Muppet-Gnome-task-popper.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basictaigaprototype/basictaigaprototype.iml" filepath="$PROJECT_DIR$/basictaigaprototype/basictaigaprototype.iml" />
     </modules>
   </component>
 </project>
