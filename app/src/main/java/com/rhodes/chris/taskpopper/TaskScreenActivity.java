@@ -44,6 +44,9 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
 
         taskAdapter = new TaskAdapter((ListView)findViewById(R.id.taskListView));
 
+        for(int i = 0; i < 20; i++)
+            taskAdapter.AddTask(new Task("Default " + i));
+
 
         Intent intent = getIntent();
 
@@ -54,7 +57,7 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
             }
             ((ListView) findViewById(R.id.taskListView)).setAdapter(taskAdapter);
         }else if(savedInstanceState == null) {
-            loadFromFile();
+            //loadFromFile();
         }
 
         Handle = new Handler(this);

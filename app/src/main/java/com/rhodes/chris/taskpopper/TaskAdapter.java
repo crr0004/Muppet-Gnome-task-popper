@@ -26,20 +26,6 @@ public class TaskAdapter implements ListAdapter{
     private static ListAdapter instance;
 
     /**
-        Creates an adapter with default items
-        Items are of text: "Default #n" where #n is the item number
-        @param numberOfItems Number of items to initially create
-     */
-    public TaskAdapter(int numberOfItems){
-        taskList.clear();
-        for(int i = 0; i < numberOfItems; i++){
-            taskList.add(new Task("Default " + i));
-        }
-        instance = this;
-
-    }
-
-    /**
         Creates an empty adapter. That will attach itself when you add to it for the first time.
         @param listHost The listview which the adapter should attach itself to
      */
