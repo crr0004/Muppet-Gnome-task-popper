@@ -29,6 +29,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -307,7 +311,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
+            try {
+                URL url = new URL("http://localhost:8000");
+                HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+                connection.setRequestProperty("Content-Type", "application/json");
+                connection.setRequestMethod("POST");
 
+                connection.setDoOutput(true);
+                
+
+            }catch (MalformedURLException e){
+
+            }catch (IOException e){
+
+            }
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
