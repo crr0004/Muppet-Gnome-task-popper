@@ -30,7 +30,7 @@ public class Task {
         this.textDesc = textDesc;
     }
 
-    public boolean isEnabled(){
+       public boolean isEnabled(){
         return isEnabled;
     }
 
@@ -39,6 +39,8 @@ public class Task {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View taskView = inflater.inflate(R.layout.task_item_view, parent, false);
 
+        //TODO Instead of having long-click callback changing the view, this method should account for the two view types.
+        //TODO Task should probably cache the view
         taskView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

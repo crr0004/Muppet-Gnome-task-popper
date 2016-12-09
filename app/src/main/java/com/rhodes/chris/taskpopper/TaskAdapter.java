@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
  * Created by chris on 2/08/15.
  * This can only contain one set of items at a time
  * This allows the adding and removing of items from classes that haven't been passed a reference
+ *
+ * TODO Static fields and methods should be removed by moving this to a singleton
  */
 public class TaskAdapter implements ListAdapter{
 
