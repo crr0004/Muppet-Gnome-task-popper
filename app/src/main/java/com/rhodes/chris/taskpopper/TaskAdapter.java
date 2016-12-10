@@ -27,6 +27,7 @@ public class TaskAdapter implements ListAdapter{
     private static DataSetObserver observer;
     private static ListView listHost;
     private static ListAdapter instance;
+    private static boolean viewExpanded = false;
 
     /**
         Creates an adapter with default items
@@ -125,7 +126,7 @@ public class TaskAdapter implements ListAdapter{
         return tasksString.toString();
     }
 
-    private static void observerChanged(){
+    public static void observerChanged(){
         if(observer != null){
             observer.onChanged();
         }else{
@@ -232,6 +233,10 @@ public class TaskAdapter implements ListAdapter{
         return newTasksBuffer.toString();
     }
 
+    public void ToggleExpandedView(){
+        viewExpanded = !viewExpanded;
+    }
+
     @Override
     public boolean areAllItemsEnabled() {
         for (Task task: taskList) {
@@ -280,7 +285,11 @@ public class TaskAdapter implements ListAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return taskList.get(position).getViewOfThis(parent, parent.getContext());
+        if(viewExpanded){
+            return taskList.get(position).getExpandedView(parent, parent.getContext());
+        }else {
+            return taskList.get(position).getViewOfThis(parent, parent.getContext());
+        }
     }
 
     @Override

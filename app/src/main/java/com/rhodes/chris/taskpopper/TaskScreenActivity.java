@@ -162,15 +162,9 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
         switch(msg.what){
             case TASK_LONG_ITEM_CLICK:
                 status = true;
-                ListView listView = ((ListView) findViewById(R.id.taskListView));
-                for (int i = 0; i < listView.getChildCount(); i++) {
-                    final LinearLayout extraButtons = (LinearLayout) listView.getChildAt(i).findViewById(R.id.taskItemExtraButtonsLayout);
-                    ViewGroup.LayoutParams currentLayoutParams = extraButtons.getLayoutParams();
-                    currentLayoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                    extraButtons.setLayoutParams(currentLayoutParams);
-                    extraButtons.setVisibility(View.VISIBLE);
-                }
-
+                taskAdapter.ToggleExpandedView();
+                TaskAdapter.observerChanged();
+                //((ListView)findViewById(R.id.taskListView)).deferNotifyDataSetChanged();
                 break;
         }
 
