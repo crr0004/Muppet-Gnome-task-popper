@@ -1,6 +1,5 @@
 package com.rhodes.chris.taskpopper;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,10 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.rhodes.chris.taskpopper.exceptions.TaskScreenException;
@@ -103,7 +101,6 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
         if(read < length){
             throw new TaskScreenException("didn't read full string from save file");
         }
-        //TODO This is getting an array that is larger than the capacity of the buffer
         return new String(stringBuffer);
     }
 
@@ -112,8 +109,10 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
         buffer.putInt(toWrite);
         fos.write(buffer.array());
     }
-
     public boolean addTask(){
+       return addTask(null,-1);
+    }
+    public boolean addTask(Task task, final int pos){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 // Add the buttons
 
@@ -121,17 +120,24 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
 
         builder.setTitle(getString(R.string.task_item_add_dialog_title));
 
-       // @SuppressWarnings()
+
         View dialogLayoutView = inflater.inflate(R.layout.task_item_add_dialog, null);
         builder.setView(dialogLayoutView);
 
         final EditText enteredText = (EditText)dialogLayoutView.findViewById(R.id.task_item_add_dialog_task_desc);
-
+        if(task != null){
+            enteredText.setText(task.getDesc());
+        }
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
-                TaskAdapter.AddTask(new Task(enteredText.getText().toString()));
+                Task newTask = new Task(enteredText.getText().toString());
+                if(pos > -1){
+                    TaskAdapter.AddTaskAt(newTask, pos);
+                }else {
+                    TaskAdapter.AddTask(newTask);
+                }
                 dialog.dismiss();
             }
         });
@@ -147,17 +153,12 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
 
 // Create the AlertDialog
         AlertDialog dialog = builder.create();
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialog) {
-                //TODO This doesn't work. Should auto focus on textbox when dialog opens
-                enteredText.requestFocus();
-            }
-        });
+
         dialog.show();
 
         return true;
     }
+
 
     @Override
     public boolean handleMessage(Message msg) {
@@ -251,7 +252,13 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
 
             return true;
         }else if(id == R.id.action_edit){
-
+            int index = taskAdapter.getIndexOfSelected();
+            Task selected = taskAdapter.getSelected(index);
+            if(selected != null){
+                TaskAdapter.RemoveTask(selected);
+                addTask(selected,index);
+            }
+            return true;
         }else if(id == R.id.action_add_task) {
             addTask();
         }else if(id == R.id.action_remove){

@@ -43,12 +43,10 @@ public class Task {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View taskView = inflater.inflate(R.layout.task_item_view, parent, false);
 
-            //TODO Instead of having long-click callback changing the view, this method should account for the two view types.
-            //TODO Task should probably cache the view
+
             taskView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    //TODO This should go in a message to the activity handling this view
                     TaskScreenActivity.Handle.sendEmptyMessage(TaskScreenActivity.TASK_LONG_ITEM_CLICK);
                     return true;
                 }
@@ -65,6 +63,7 @@ public class Task {
                         //   Drawable background = ((View)buttonView.getParent()).getBackground();
                         // background.setColorFilter(Color.parseColor("#00ff00"), PorterDuff.Mode.DARKEN);
                     }
+                    buttonView.invalidate();
                 }
             });
             viewOfThis = taskView;

@@ -11,6 +11,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 import com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
 
@@ -180,6 +181,32 @@ public class TaskAdapter implements ListAdapter{
         }
     }
 
+    public Task getSelected(){
+        int index = -1;
+        index = getIndexOfSelected();
+        if(index != -1){
+            return taskList.get(index);
+        }
+        return null;
+    }
+
+    public Task getSelected(int pos){
+        if(pos > -1 && pos < taskList.size()){
+            return taskList.get(pos);
+        }else{
+            return null;
+        }
+    }
+
+    public int getIndexOfSelected(){
+        for (int i = taskList.size(); i > 0; i--){
+            if(taskList.get(i-1).isChecked()) {
+                return i-1;
+            }
+        }
+        return -1;
+    }
+
     /**
      * Clears all the tasks from the list and refreshes listview
      */
@@ -195,7 +222,7 @@ public class TaskAdapter implements ListAdapter{
      */
     public static boolean RemoveTask(Task task){
         boolean status = TaskAdapter.taskList.remove(task);
-        observerInvalidated();
+        observerChanged();
         return status;
     }
 
@@ -206,7 +233,7 @@ public class TaskAdapter implements ListAdapter{
      */
     public static Task RemoveTaskAt(int position){
         Task task = TaskAdapter.taskList.remove(position);
-        observer.onInvalidated();
+        observerChanged();
         return task;
     }
 
