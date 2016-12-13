@@ -109,10 +109,18 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
         buffer.putInt(toWrite);
         fos.write(buffer.array());
     }
-    public boolean addTask(){
-       return addTask(null,-1);
+    public void addTask(){
+       addTask(null,-1);
     }
-    public boolean addTask(Task task, final int pos){
+
+    /**
+     * Helper method to add tasks to list.
+     * Mainly for UI to call
+     * @param task a task to replicate (good for editing a task)
+     * @param pos task to override with new task. Set to -1 to add to end of list
+     */
+    //TODO Split this out so it's not doing so much
+    public void addTask(Task task, final int pos){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 // Add the buttons
 
@@ -134,6 +142,7 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
                 // User clicked OK button
                 Task newTask = new Task(enteredText.getText().toString());
                 if(pos > -1){
+                    TaskAdapter.RemoveTaskAt(pos);
                     TaskAdapter.AddTaskAt(newTask, pos);
                 }else {
                     TaskAdapter.AddTask(newTask);
@@ -156,7 +165,6 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
 
         dialog.show();
 
-        return true;
     }
 
 
@@ -255,7 +263,6 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
             int index = taskAdapter.getIndexOfSelected();
             Task selected = taskAdapter.getSelected(index);
             if(selected != null){
-                TaskAdapter.RemoveTask(selected);
                 addTask(selected,index);
             }
             return true;
