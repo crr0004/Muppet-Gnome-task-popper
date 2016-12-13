@@ -54,6 +54,7 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
             }
             ((ListView) findViewById(R.id.taskListView)).setAdapter(taskAdapter);
         }else if(savedInstanceState == null) {
+            Log.i("TaskScreenActivity", "Restoring from file");
             loadFromFile();
         }
 
@@ -96,12 +97,14 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
     }
 
     private String readStringFromFile(FileInputStream fis, int length) throws IOException{
-        ByteBuffer stringBuffer = ByteBuffer.allocateDirect(length);
-        int read = fis.read(stringBuffer.array());
-        if(read < stringBuffer.capacity()){
+        //ByteBuffer stringBuffer = ByteBuffer.allocateDirect(length);
+        byte[] stringBuffer = new byte[length];
+        int read = fis.read(stringBuffer);
+        if(read < length){
             throw new TaskScreenException("didn't read full string from save file");
         }
-        return new String(stringBuffer.array());
+        //TODO This is getting an array that is larger than the capacity of the buffer
+        return new String(stringBuffer);
     }
 
     private void writeIntToFile(FileOutputStream fos, int toWrite) throws IOException{
@@ -164,7 +167,6 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
                 status = true;
                 taskAdapter.ToggleExpandedView();
                 TaskAdapter.observerChanged();
-                //((ListView)findViewById(R.id.taskListView)).deferNotifyDataSetChanged();
                 break;
         }
 
@@ -174,15 +176,17 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        Log.i("TaskScreenActivity", "Restoring savedInstanceState");
         taskAdapter.loadState(this, savedInstanceState);
         ((ListView)findViewById(R.id.taskListView)).setAdapter(taskAdapter);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        taskAdapter.saveState(this, outState);
         super.onSaveInstanceState(outState);
 
-        taskAdapter.saveState(this, outState);
+
     }
 
     @Override

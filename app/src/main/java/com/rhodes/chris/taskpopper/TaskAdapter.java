@@ -73,7 +73,8 @@ public class TaskAdapter implements ListAdapter{
     public void loadState(Context context, Bundle bundle){
         //Should this have a test?
         if(bundle.getBoolean(context.getString(R.string.tasks_saved_key_name), false)){
-            String savedTasks = bundle.getString(context.getString(R.string.tasks_saved_list_key_name), "Default 1");
+            String savedTasks = bundle.getString(context.getString(R.string.tasks_saved_list_key_name), "Default 2");
+            Log.i("TaskAdapter", "Restoring string: " + savedTasks);
             loadState(savedTasks);
         }
     }
@@ -92,6 +93,7 @@ public class TaskAdapter implements ListAdapter{
         String[] taskDescriptions = savedTasks.split(",");
         for (String taskDesc:
                 taskDescriptions) {
+            Log.i("TaskAdapter", " Adding to state " + taskDesc);
             TaskAdapter.AddTask(new Task(taskDesc));
         }
     }
@@ -115,14 +117,12 @@ public class TaskAdapter implements ListAdapter{
      */
     public String getState(){
         StringBuilder tasksString = new StringBuilder();
-        if(taskList.size() > 0) {
-            tasksString.append(taskList.get(0).getDesc());
-            for (int i = 1; i < taskList.size(); i++) {
-                tasksString.append(",");
-                tasksString.append(taskList.get(i).getDesc());
-            }
+        for (int i = 0; i < taskList.size(); i++) {
+            Log.i("TaskAdapter", " Adding to save state " + taskList.get(i).getDesc());
+            tasksString.append(taskList.get(i).getDesc());
+            tasksString.append(",");
         }
-
+        Log.i("TaskAdapter", "Saving state " + tasksString.toString());
         return tasksString.toString();
     }
 
