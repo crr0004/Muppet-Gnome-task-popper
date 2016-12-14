@@ -32,7 +32,7 @@ public class MassAddActivity extends AppCompatActivity {
                 if(editText.length() > 0) {
                     goToTaskScreen.putExtra(getString(R.string.tasks_saved_key_name), true);
                     goToTaskScreen.putExtra(getString(R.string.tasks_saved_list_key_name),
-                            TaskAdapter.TransformNewLineString(editText));
+                            editText);
                 }
                 startActivity(goToTaskScreen);
             }

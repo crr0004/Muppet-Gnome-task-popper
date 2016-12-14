@@ -48,7 +48,7 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
         if(intent.getAction().equals(getString(R.string.action_add_mass_tasks))){
             if(getIntent().getBooleanExtra(getString(R.string.tasks_saved_key_name), false)) {
                 String newTasks = getIntent().getStringExtra(getString(R.string.tasks_saved_list_key_name));
-                taskAdapter.loadState(newTasks);
+                taskAdapter.loadState(taskAdapter.TransformNewLineString(newTasks));
             }
             ((ListView) findViewById(R.id.taskListView)).setAdapter(taskAdapter);
         }else if(savedInstanceState == null) {
@@ -142,10 +142,10 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
                 // User clicked OK button
                 Task newTask = new Task(enteredText.getText().toString());
                 if(pos > -1){
-                    TaskAdapter.RemoveTaskAt(pos);
-                    TaskAdapter.AddTaskAt(newTask, pos);
+                    taskAdapter.RemoveTaskAt(pos);
+                    taskAdapter.AddTaskAt(newTask, pos);
                 }else {
-                    TaskAdapter.AddTask(newTask);
+                    taskAdapter.AddTask(newTask);
                 }
                 dialog.dismiss();
             }
@@ -175,7 +175,7 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
             case TASK_LONG_ITEM_CLICK:
                 status = true;
                 taskAdapter.ToggleExpandedView();
-                TaskAdapter.observerChanged();
+                taskAdapter.observerChanged();
                 break;
         }
 
@@ -274,7 +274,7 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
             builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    TaskAdapter.RemoveSelected();
+                    taskAdapter.RemoveSelected();
                     dialog.dismiss();
                 }
             });
@@ -293,7 +293,7 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
             builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    TaskAdapter.RemoveAll();
+                    taskAdapter.RemoveAll();
                     dialog.dismiss();
                 }
             });

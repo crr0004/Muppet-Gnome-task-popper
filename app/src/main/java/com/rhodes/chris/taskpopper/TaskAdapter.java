@@ -20,15 +20,14 @@ import com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
  * This can only contain one set of items at a time
  * This allows the adding and removing of items from classes that haven't been passed a reference
  *
- * TODO Static fields and methods should be removed by moving this to a singleton
  */
 public class TaskAdapter implements ListAdapter{
 
-    private static List<Task> taskList = new ArrayList<>(0);
-    private static DataSetObserver observer;
-    private static ListView listHost;
-    private static ListAdapter instance;
-    private static boolean viewExpanded = false;
+    private List<Task> taskList = new ArrayList<>(0);
+    private DataSetObserver observer;
+    private ListView listHost;
+    private ListAdapter instance;
+    private boolean viewExpanded = false;
 
     /**
         Creates an adapter with default items
@@ -49,7 +48,7 @@ public class TaskAdapter implements ListAdapter{
         @param listHost The listview which the adapter should attach itself to
      */
     public TaskAdapter(ListView listHost){
-        TaskAdapter.listHost = listHost;
+        this.listHost = listHost;
         instance = this;
     }
 
@@ -95,7 +94,7 @@ public class TaskAdapter implements ListAdapter{
         for (String taskDesc:
                 taskDescriptions) {
             Log.i("TaskAdapter", " Adding to state " + taskDesc);
-            TaskAdapter.AddTask(new Task(taskDesc));
+            AddTask(new Task(taskDesc));
         }
     }
 
@@ -127,20 +126,20 @@ public class TaskAdapter implements ListAdapter{
         return tasksString.toString();
     }
 
-    public static void observerChanged(){
+    public void observerChanged(){
         if(observer != null){
             observer.onChanged();
         }else{
             //Should this have an error message saying the listHost is null?
             if(listHost != null){
-                listHost.setAdapter(TaskAdapter.instance);
+                listHost.setAdapter(instance);
             }
 
         }
 
     }
 
-    private static void observerInvalidated(){
+    private void observerInvalidated(){
         if(observer != null){
             observer.onInvalidated();
         }
@@ -155,8 +154,8 @@ public class TaskAdapter implements ListAdapter{
      * Adds a task to the end of the list and refreshes the current listview
      * @param task The task to add
      */
-    public static void AddTask(Task task){
-        TaskAdapter.AddTaskAt(task, taskList.size());
+    public void AddTask(Task task){
+        AddTaskAt(task, taskList.size());
     }
 
     /**
@@ -164,8 +163,8 @@ public class TaskAdapter implements ListAdapter{
      * @param task The task to add
      * @param position The position of the task in the list
      */
-    public static void AddTaskAt(Task task, int position){
-        TaskAdapter.taskList.add(position, task);
+    public void AddTaskAt(Task task, int position){
+        this.taskList.add(position, task);
         if(taskList.size() <= 1){
             observerChanged();
         }
@@ -173,7 +172,7 @@ public class TaskAdapter implements ListAdapter{
         observerInvalidated();
     }
 
-    public static void RemoveSelected(){
+    public void RemoveSelected(){
         for (int i = taskList.size(); i > 0; i--){
             if(taskList.get(i-1).isChecked()) {
                 RemoveTaskAt(i-1);
@@ -210,7 +209,7 @@ public class TaskAdapter implements ListAdapter{
     /**
      * Clears all the tasks from the list and refreshes listview
      */
-    public static void RemoveAll(){
+    public void RemoveAll(){
         taskList.clear();
         observerChanged();
     }
@@ -220,8 +219,8 @@ public class TaskAdapter implements ListAdapter{
      * @param task The task to remove
      * @return If the removal was successful
      */
-    public static boolean RemoveTask(Task task){
-        boolean status = TaskAdapter.taskList.remove(task);
+    public boolean RemoveTask(Task task){
+        boolean status = taskList.remove(task);
         observerChanged();
         return status;
     }
@@ -231,8 +230,8 @@ public class TaskAdapter implements ListAdapter{
      * @param position The position of the task to remove
      * @return The removed task
      */
-    public static Task RemoveTaskAt(int position){
-        Task task = TaskAdapter.taskList.remove(position);
+    public Task RemoveTaskAt(int position){
+        Task task = taskList.remove(position);
         observerChanged();
         return task;
     }
@@ -242,7 +241,7 @@ public class TaskAdapter implements ListAdapter{
      * @param tasks Text with tasks separated by a newline
      * @return string which can be used in loadState to create tasks
      */
-    public static String TransformNewLineString(String tasks){
+    public String TransformNewLineString(String tasks){
 
         if(tasks.length() == 0){
             throw new TaskAdapterException("Can't transform new line string with zero length");
@@ -282,12 +281,12 @@ public class TaskAdapter implements ListAdapter{
     //TODO Check if more than one observer is passed through here
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
-        TaskAdapter.observer = observer;
+        this.observer = observer;
     }
 
     @Override
     public void unregisterDataSetObserver(DataSetObserver observer) {
-        TaskAdapter.observer = null;
+        this.observer = null;
     }
 
     @Override
