@@ -19,7 +19,7 @@ import android.widget.TextView;
  * Created by chris on 2/08/15.
  *
  */
-public class Task {
+class Task {
 
     private boolean isEnabled = true;
     private String textDesc = "Hello World";
@@ -93,4 +93,42 @@ public class Task {
     public String getDesc() {
         return this.textDesc;
     }
+
+    public Memento getMemento(){
+        TaskMemento memento = new TaskMemento();
+        memento.setEnabled(isEnabled);
+        memento.setTextDesc(textDesc);
+        return memento;
+    }
+
+    public void setMemento(Memento memento){
+        TaskMemento state = (TaskMemento)memento;
+        this.isEnabled = state.isEnabled();
+        this.textDesc = state.getTextDesc();
+
+    }
+
+
 }
+
+class TaskMemento implements Memento{
+    private boolean isEnabled;
+    private String textDesc;
+
+    boolean isEnabled() {
+        return isEnabled;
+    }
+
+    void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    String getTextDesc() {
+        return textDesc;
+    }
+
+    void setTextDesc(String textDesc) {
+        this.textDesc = textDesc;
+    }
+}
+

@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -261,7 +260,7 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
             return true;
         }else if(id == R.id.action_edit){
             int index = taskAdapter.getIndexOfSelected();
-            Task selected = taskAdapter.getSelected(index);
+            Task selected = taskAdapter.getTask(index);
             if(selected != null){
                 addTask(selected,index);
             }

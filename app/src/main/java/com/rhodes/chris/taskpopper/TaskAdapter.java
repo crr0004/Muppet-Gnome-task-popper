@@ -180,7 +180,7 @@ public class TaskAdapter implements ListAdapter{
         }
     }
 
-    public Task getSelected(){
+    public Task getSelectedTask(){
         int index = -1;
         index = getIndexOfSelected();
         if(index != -1){
@@ -189,7 +189,7 @@ public class TaskAdapter implements ListAdapter{
         return null;
     }
 
-    public Task getSelected(int pos){
+    public Task getTask(int pos){
         if(pos > -1 && pos < taskList.size()){
             return taskList.get(pos);
         }else{

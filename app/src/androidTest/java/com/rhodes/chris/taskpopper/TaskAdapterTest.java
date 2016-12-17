@@ -11,22 +11,24 @@ import junit.framework.TestCase;
 public class TaskAdapterTest extends TestCase{
 
     private TaskAdapter testAdapter;
+    static final int TASK_COUNT = 2;
 
     public void setUp(){
-        testAdapter = new TaskAdapter(2);
+        testAdapter = new TaskAdapter(TASK_COUNT);
     }
 
     public void testLoadStateString(){
-        String shouldMatch = "Default 0,Default 1";
-        TaskAdapter.RemoveAll();
+        String shouldMatch = "Default 0,Default 1,";
+        testAdapter.RemoveAll();
         testAdapter.loadState(shouldMatch);
-        String result = testAdapter.getState();
-        assertEquals(shouldMatch, result);
+        assertEquals(testAdapter.getCount(), TASK_COUNT);
+        assertEquals(((TaskMemento)testAdapter.getTask(0).getMemento()).getTextDesc(), "Default 0");
+        assertEquals(((TaskMemento)testAdapter.getTask(1).getMemento()).getTextDesc(), "Default 1");
     }
 
     public void testLoadStateStringZeroLength(){
         String shouldMatch = "";
-        TaskAdapter.RemoveAll();
+        testAdapter.RemoveAll();
         try{
             testAdapter.loadState(shouldMatch);
             assertTrue("This shouldn't trigger as exception should have been raised", false);
@@ -38,7 +40,7 @@ public class TaskAdapterTest extends TestCase{
     }
 
     public void testSaveStateString(){
-        String shouldMatch = "Default 0,Default 1";
+        String shouldMatch = "Default 0,Default 1,";
         String result = testAdapter.getState();
         assertEquals(shouldMatch, result);
     }
