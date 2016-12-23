@@ -43,6 +43,10 @@ public class TaskAdapter implements ListAdapter{
 
     }
 
+    public TaskAdapter(){
+        instance = this;
+    }
+
     /**
         Creates an empty adapter. That will attach itself when you add to it for the first time.
         @param listHost The listview which the adapter should attach itself to
@@ -93,7 +97,6 @@ public class TaskAdapter implements ListAdapter{
         String[] taskDescriptions = savedTasks.split(",");
         for (String taskDesc:
                 taskDescriptions) {
-            Log.i("TaskAdapter", " Adding to state " + taskDesc);
             AddTask(new Task(taskDesc));
         }
     }
@@ -118,11 +121,9 @@ public class TaskAdapter implements ListAdapter{
     public String getState(){
         StringBuilder tasksString = new StringBuilder();
         for (int i = 0; i < taskList.size(); i++) {
-            Log.i("TaskAdapter", " Adding to save state " + taskList.get(i).getDesc());
             tasksString.append(taskList.get(i).getDesc());
             tasksString.append(",");
         }
-        Log.i("TaskAdapter", "Saving state " + tasksString.toString());
         return tasksString.toString();
     }
 
@@ -156,6 +157,11 @@ public class TaskAdapter implements ListAdapter{
      */
     public void AddTask(Task task){
         AddTaskAt(task, taskList.size());
+    }
+
+    public int addTask(Task task){
+        AddTaskAt(task, taskList.size());
+        return taskList.size() -1;
     }
 
     /**

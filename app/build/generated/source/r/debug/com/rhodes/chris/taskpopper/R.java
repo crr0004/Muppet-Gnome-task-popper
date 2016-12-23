@@ -1627,8 +1627,8 @@ containing a value of this type.
     }
     public static final class id {
         public static final int action0=0x7f0c0056;
-        public static final int action_add_mass_task=0x7f0c006b;
-        public static final int action_add_task=0x7f0c0068;
+        public static final int action_add_mass_task=0x7f0c006c;
+        public static final int action_add_task=0x7f0c0069;
         public static final int action_bar=0x7f0c0041;
         public static final int action_bar_activity_content=0x7f0c0000;
         public static final int action_bar_container=0x7f0c0040;
@@ -1636,18 +1636,18 @@ containing a value of this type.
         public static final int action_bar_spinner=0x7f0c0001;
         public static final int action_bar_subtitle=0x7f0c0022;
         public static final int action_bar_title=0x7f0c0021;
-        public static final int action_clear_all_tasks=0x7f0c006c;
-        public static final int action_clear_text=0x7f0c0067;
+        public static final int action_clear_all_tasks=0x7f0c006d;
+        public static final int action_clear_text=0x7f0c0068;
         public static final int action_context_bar=0x7f0c0042;
         public static final int action_divider=0x7f0c005a;
-        public static final int action_edit=0x7f0c006a;
+        public static final int action_edit=0x7f0c006b;
         public static final int action_menu_divider=0x7f0c0002;
         public static final int action_menu_presenter=0x7f0c0003;
         public static final int action_mode_bar=0x7f0c003e;
         public static final int action_mode_bar_stub=0x7f0c003d;
         public static final int action_mode_close_button=0x7f0c0023;
-        public static final int action_remove=0x7f0c0069;
-        public static final int action_settings=0x7f0c006d;
+        public static final int action_remove=0x7f0c006a;
+        public static final int action_settings=0x7f0c006e;
         public static final int activity_chooser_view_content=0x7f0c0024;
         public static final int alertTitle=0x7f0c0030;
         public static final int always=0x7f0c001b;
@@ -1720,11 +1720,12 @@ containing a value of this type.
         public static final int status_bar_latest_event_content=0x7f0c0058;
         public static final int submit_area=0x7f0c004c;
         public static final int tabMode=0x7f0c000b;
-        public static final int taskItemDoneCheckBox=0x7f0c0066;
-        public static final int taskItemExtraButtonsLayout=0x7f0c0065;
-        public static final int taskItemText=0x7f0c0064;
+        public static final int taskItemDoneCheckBox=0x7f0c0067;
+        public static final int taskItemExtraButtonsLayout=0x7f0c0066;
+        public static final int taskItemText=0x7f0c0065;
         public static final int taskListView=0x7f0c0055;
-        public static final int task_item_add_dialog_task_desc=0x7f0c0063;
+        public static final int task_item_add_dialog_layout=0x7f0c0063;
+        public static final int task_item_add_dialog_task_desc=0x7f0c0064;
         public static final int text=0x7f0c0060;
         public static final int text2=0x7f0c005e;
         public static final int textSpacerNoButtons=0x7f0c0034;

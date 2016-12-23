@@ -144,7 +144,8 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
                     taskAdapter.RemoveTaskAt(pos);
                     taskAdapter.AddTaskAt(newTask, pos);
                 }else {
-                    taskAdapter.AddTask(newTask);
+                    //taskAdapter.AddTask(newTask);
+                    new AddSimpleTaskCommand(taskAdapter, enteredText.getText().toString()).execute();
                 }
                 dialog.dismiss();
             }
