@@ -15,33 +15,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db7955b9-8799-4d09-a1b1-c4206be20bde" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/espresso_core_2_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/espresso_idling_resource_2_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/exposed_instrumentation_api_publish_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_integration_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_library_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javawriter_2_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javax_annotation_api_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jsr305_2_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mockito_core_1_10_19.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/objenesis_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/rules_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/runner_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/ReplaceSimpleTaskCommand.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/androidTest/androidTest.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/ApplicationTest.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/rhodes/chris/taskpopper/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/rhodes/chris/taskpopper/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskScreenTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskScreenTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/Command.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/Command.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskAdapterTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskAdapterTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskScreenActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskScreenActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/task_item_add_dialog.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/task_item_add_dialog.xml" />
     </list>
     <ignored path="Muppet-Gnome-task-popper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,11 +51,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="TaskScreenActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TaskScreenActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskScreenActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="130" column="28" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
+            <state relative-caret-position="506">
+              <caret line="145" column="86" selection-start-line="145" selection-start-column="86" selection-end-line="145" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -118,14 +94,14 @@
       <file leaf-file-name="TaskAdapterTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskAdapterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+            <state relative-caret-position="254">
+              <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Command.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/Command.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
@@ -1804,11 +1780,11 @@
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskScreenTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/AddTaskCommand.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/AddSimpleTaskCommand.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskScreenActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskAdapterTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/ReplaceSimpleTaskCommand.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/Command.java" />
+        <option value="$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskAdapterTest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskScreenActivity.java" />
       </list>
     </option>
   </component>
@@ -2626,13 +2602,17 @@
       <option name="project" value="LOCAL" />
       <updated>1482478830721</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Continuing to fix code styles&#10;">
+      <created>1482478897284</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1482478897284</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TaskAdapterTest - 2016.12.19 at 10h 16m 46s.xml">
-      <configuration name="TaskAdapterTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
     <history-entry file="TaskAdapterTest - 2016.12.23 at 18h 21m 11s.xml">
       <configuration name="TaskAdapterTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
@@ -2640,6 +2620,9 @@
       <configuration name="TaskAdapterTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
     <history-entry file="TaskAdapterTest - 2016.12.23 at 18h 27m 48s.xml">
+      <configuration name="TaskAdapterTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="TaskAdapterTest - 2016.12.23 at 19h 16m 33s.xml">
       <configuration name="TaskAdapterTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
     <history-entry file="TaskScreenTest - 2016.12.19 at 10h 17m 11s.xml">
@@ -2681,10 +2664,10 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32684165" sideWeight="0.52994144" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32684165" sideWeight="0.53174245" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283721" sideWeight="0.48390394" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32684165" sideWeight="0.47005853" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3259949" sideWeight="0.5776677" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32684165" sideWeight="0.46825755" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3259949" sideWeight="0.5754165" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297362" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2732,7 +2715,8 @@
     <MESSAGE value="Added command interface&#10;" />
     <MESSAGE value="Added simple task command&#10;" />
     <MESSAGE value="Added AddSimpleTaskCommand test&#10;&#10;Changed test to JUnit 4&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AddSimpleTaskCommand test&#10;&#10;Changed test to JUnit 4&#10;" />
+    <MESSAGE value="Continuing to fix code styles&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Continuing to fix code styles&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3116,14 +3100,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskScreenActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="130" column="28" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskScreenTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -3153,6 +3129,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/AddSimpleTaskCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -3168,16 +3152,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/rhodes/chris/taskpopper/TaskAdapterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+        <state relative-caret-position="254">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/Command.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rhodes/chris/taskpopper/TaskScreenActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        <state relative-caret-position="506">
+          <caret line="145" column="86" selection-start-line="145" selection-start-column="86" selection-end-line="145" selection-end-column="86" />
           <folding />
         </state>
       </provider>

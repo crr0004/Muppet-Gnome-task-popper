@@ -42,6 +42,22 @@ public class TaskAdapterTest {
     }
 
     @Test
+    public void ReplaceSimpleTaskCommandTest(){
+        TaskAdapter adapter = new TaskAdapter();
+        String taskDesc = "Default 0";
+        String replaceTaskDesc = "Default 1";
+        adapter.AddTask(new Task(taskDesc));
+        assertEquals(adapter.getTask(0).getDesc(), taskDesc);
+
+        Command replaceTaskCommand = new ReplaceSimpleTaskCommand(adapter, replaceTaskDesc, 0);
+
+        replaceTaskCommand.execute();
+        assertEquals(adapter.getTask(0).getDesc(), replaceTaskDesc);
+        replaceTaskCommand.undo();
+        assertEquals(adapter.getTask(0).getDesc(), taskDesc);
+    }
+
+    @Test
     public void testLoadStateString(){
         String shouldMatch = "Default 0,Default 1,";
         testAdapter.RemoveAll();

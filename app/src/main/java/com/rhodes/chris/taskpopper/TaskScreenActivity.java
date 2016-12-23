@@ -139,10 +139,11 @@ public class TaskScreenActivity extends AppCompatActivity implements Handler.Cal
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
-                Task newTask = new Task(enteredText.getText().toString());
+                String newTask = enteredText.getText().toString();
                 if(pos > -1){
-                    taskAdapter.RemoveTaskAt(pos);
-                    taskAdapter.AddTaskAt(newTask, pos);
+                    //taskAdapter.RemoveTaskAt(pos);
+                    //taskAdapter.AddTaskAt(newTask, pos);
+                    new ReplaceSimpleTaskCommand(taskAdapter, newTask, pos).execute();
                 }else {
                     //taskAdapter.AddTask(newTask);
                     new AddSimpleTaskCommand(taskAdapter, enteredText.getText().toString()).execute();
