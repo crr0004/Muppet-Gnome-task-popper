@@ -1,22 +1,47 @@
 package com.rhodes.chris.taskpopper;
 
+import android.support.test.runner.AndroidJUnit4;
+import android.test.suitebuilder.annotation.LargeTest;
+
 import com.rhodes.chris.taskpopper.exceptions.TaskAdapterException;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by chris on 8/08/15.
  * Test suite for the task adapter class
  */
-public class TaskAdapterTest extends TestCase{
+@RunWith(AndroidJUnit4.class)
+@LargeTest
+public class TaskAdapterTest {
 
     private TaskAdapter testAdapter;
-    static final int TASK_COUNT = 2;
+    private static final int TASK_COUNT = 2;
 
+    @Before
     public void setUp(){
         testAdapter = new TaskAdapter(TASK_COUNT);
     }
 
+    @Test
+    public void AddSimpleTaskCommandTest(){
+        TaskAdapter adapter = new TaskAdapter();
+        String taskDesc = "Default 0";
+        Command addTaskCommand = new AddSimpleTaskCommand(adapter, taskDesc);
+        for(int i = 0; i < 10; i++) {
+            addTaskCommand.execute();
+            assertEquals(adapter.getCount(), 1);
+            assertEquals(adapter.getTask(0).getDesc(), taskDesc);
+            addTaskCommand.undo();
+            assertEquals(adapter.getCount(), 0);
+        }
+    }
+
+    @Test
     public void testLoadStateString(){
         String shouldMatch = "Default 0,Default 1,";
         testAdapter.RemoveAll();
@@ -26,6 +51,7 @@ public class TaskAdapterTest extends TestCase{
         assertEquals(((TaskMemento)testAdapter.getTask(1).getMemento()).getTextDesc(), "Default 1");
     }
 
+    @Test
     public void testLoadStateStringZeroLength(){
         String shouldMatch = "";
         testAdapter.RemoveAll();
@@ -39,6 +65,7 @@ public class TaskAdapterTest extends TestCase{
         }
     }
 
+    @Test
     public void testSaveStateString(){
         String shouldMatch = "Default 0,Default 1,";
         String result = testAdapter.getState();
